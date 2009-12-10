@@ -189,7 +189,6 @@ template "#{node[:tomcat6][:dir]}/tomcat6.conf" do
   group "#{node[:tomcat6][:user]}"
   owner "#{node[:tomcat6][:user]}"
   mode 0644
-  notifies :stop, resources(:service => "god"), :immediately
   notifies :restart, resources(:service => "tomcat6"), :immediately
 end
 
