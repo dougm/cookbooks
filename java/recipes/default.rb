@@ -24,6 +24,9 @@ java_pkg = value_for_platform(
   "debian" => {
     "default" => "sun-java6-jdk"
   },
+  "centos" => {
+    "default" => "java-1.6.0-openjdk"
+  },
   "default" => "sun-java6-jdk"
 )
 
