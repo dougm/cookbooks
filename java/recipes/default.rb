@@ -38,7 +38,9 @@ execute "update-java-alternatives" do
 end
 
 package java_pkg do
-  response_file "java.seed"
+  if platform?("ubuntu", "debian")
+    response_file "java.seed"
+  end
   action :install
   notifies :run, resources(:execute => "update-java-alternatives"), :immediately
 end
