@@ -32,6 +32,7 @@ Win32::Registry::HKEY_LOCAL_MACHINE.open(TERM_SERVICE, Win32::Registry::KEY_ALL_
   end
 end
 
-execute "rdp enable" do
+execute "firewall rdp enable" do
   command "netsh firewall set service remotedesktop enable"
+  only_if "netsh firewall show state"
 end
