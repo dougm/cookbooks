@@ -20,13 +20,17 @@
 
 #generic windows stuff
 
-#eat dust zlib/rubyzip/zippy
-#but seriously is there a simpler ruby stdlib alternative?
-#http://msdn.microsoft.com/en-us/library/ms723207.aspx
-def win32_unzip(zip, dir)
-  require 'win32ole'
-  shell = WIN32OLE.new("Shell.Application")
-  source = shell.NameSpace(zip).items
-  target = shell.NameSpace(dir)
-  target.CopyHere(source, 4|16)
+#gem rubyzip; is there a ruby stdlib alternative?
+def win32_unzip(file, dest, force=true)
+  require 'zip/zip'
+  Zip::ZipFile.open(file) do |zip|
+    zip.each do |entry|
+      path = File.join(dest, entry.name)
+      FileUtils.mkdir_p(File.dirname(path))
+      if force && File.exists?(path)
+        FileUtils.rm(path)
+      end
+      zip.extract(entry, path)
+    end
+  end
 end

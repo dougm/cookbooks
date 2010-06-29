@@ -68,7 +68,7 @@ If Proxy <> "" Then
   GemProxy = " --http-proxy=http://" & Proxy
 End If
 
-Cmd = Ruby & " " & Dst & "\bin\gem install" & GemProxy & " --no-ri --no-rdoc chef ruby-wmi windows-pr"
+Cmd = Ruby & " " & Dst & "\bin\gem install" & GemProxy & " --no-ri --no-rdoc chef ruby-wmi windows-pr rubyzip"
 WScript.Echo Cmd
 Set Exec = Shell.Exec(Cmd)
 Do Until Exec.StdOut.AtEndOfStream
