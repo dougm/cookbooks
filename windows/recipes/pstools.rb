@@ -20,7 +20,6 @@
 #install pstools and add to PATH
 #optionally accept eula for all programs
 
-dst = "#{node[:pstools][:dir]}\\PsTools.zip"
 bin = "#{node[:pstools][:dir]}\\bin"
 
 directory bin do
@@ -28,17 +27,28 @@ directory bin do
   recursive true
 end
 
-remote_file dst do
-  source node[:pstools][:zip]
-  not_if { File.exists?(dst) }
-end
+pkg_exists = {
+  "PsTools" => "PsExec.exe",
+  "ProcessExplorer" => "procexp.exe",
+  "Handle" => "handle.exe"
+}
 
-ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
-  block do
-    unless File.exists?("#{bin}\\PsExec.exe")
-      win32_unzip(dst, bin)
+#collate various sysinternals packages
+node[:pstools][:packages].each do |pkg|
+  dst = "#{node[:pstools][:dir]}\\#{pkg}.zip"
+
+  remote_file dst do
+    source "#{node[:pstools][:mirror]}/Files/#{pkg.zip}.zip"
+    not_if { File.exists?(dst) }
+  end
+
+  ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
+    block do
+      unless File.exists?("#{bin}\\#{pkg_exists[pkg]}")
+        win32_unzip(dst, bin)
+      end
+      sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
     end
-    sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
   end
 end
 
