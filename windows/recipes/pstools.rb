@@ -20,20 +20,8 @@
 #install pstools and add to PATH
 #optionally accept eula for all programs
 
-require 'win32/registry'
-
 dst = "#{node[:pstools][:dir]}\\PsTools.zip"
 bin = "#{node[:pstools][:dir]}\\bin"
-
-if node[:pstools][:accept_eula] == true
-  #avoid eula dialog box on first run of *.exe
-  key = Win32::Registry::HKEY_CURRENT_USER.create('Software\Sysinternals')
-
-  Dir.glob("#{bin}\\*.exe").each do |file|
-    file = File.basename(file).gsub("\.exe", "")
-    key.create(file).write_i("EulaAccepted", 1)
-  end
-end
 
 directory bin do
   action :create
@@ -45,11 +33,12 @@ remote_file dst do
   not_if { File.exists?(dst) }
 end
 
-ruby_block "unzip #{dst}" do
+ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
   block do
     unless File.exists?("#{bin}\\PsExec.exe")
       win32_unzip(dst, bin)
     end
+    sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
   end
 end
 
