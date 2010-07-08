@@ -30,7 +30,8 @@ end
 pkg_exists = {
   "PsTools" => "PsExec.exe",
   "ProcessExplorer" => "procexp.exe",
-  "Handle" => "handle.exe"
+  "Handle" => "handle.exe",
+  "DebugView" => "Dbgview.exe"
 }
 
 #collate various sysinternals packages

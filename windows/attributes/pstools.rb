@@ -18,6 +18,6 @@
 #
 
 set_unless[:pstools][:mirror] = "http://download.sysinternals.com"
-set_unless[:pstools][:packages] = ["PsTools", "ProcessExplorer", "Handle"]
+set_unless[:pstools][:packages] = ["PsTools", "ProcessExplorer", "Handle", "DebugView"]
 set_unless[:pstools][:dir] = "C:\\pstools"
 set_unless[:pstools][:accept_eula] = false
