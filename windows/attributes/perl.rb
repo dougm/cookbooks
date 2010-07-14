@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set_unless[:perl][:release] = "5.10.1.1007/ActivePerl-5.10.1.1007-MSWin32-x86-291969.msi"
-set_unless[:perl][:mirror] = "http://downloads.activestate.com"
-set_unless[:perl][:dir] = "C:"
+default[:perl][:release] = "5.10.1.1007/ActivePerl-5.10.1.1007-MSWin32-x86-291969.msi"
+default[:perl][:mirror] = "http://downloads.activestate.com"
+default[:perl][:dir] = "C:"
 

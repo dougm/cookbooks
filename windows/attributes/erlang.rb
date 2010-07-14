@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 
-set_unless[:erlang][:release] = "R14A"
-set_unless[:erlang][:mirror] = "http://www.erlang.org/download"
-set_unless[:erlang][:dir] = "C:\\erl"
+default[:erlang][:release] = "R14A"
+default[:erlang][:mirror] = "http://www.erlang.org/download"
+default[:erlang][:dir] = "C:\\erl"

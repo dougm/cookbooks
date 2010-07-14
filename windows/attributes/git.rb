@@ -17,18 +17,18 @@
 # limitations under the License.
 #
 
-set_unless[:git][:release] = "1.7.0.2-preview20100309"
-set_unless[:git][:mirror] = "http://msysgit.googlecode.com/files"
-set_unless[:git][:dir] = "C:\\Git"
+default[:git][:release] = "1.7.0.2-preview20100309"
+default[:git][:mirror] = "http://msysgit.googlecode.com/files"
+default[:git][:dir] = "C:\\Git"
 
 #global etc\gitconfig setting of core.autocrlf. gui installer prompts for:
 #"Checkout Windows-style, commit Unix-style line endings" -> "input"
 #"Checkout as-is, commit Unix-style line endings" -> "true"
 #"Checkout as-is, commit as-is" -> "false"
-set_unless[:git][:autocrlf] = "true"
+default[:git][:autocrlf] = "true"
 
 #Adjusting your PATH environment
 #"Use Git Bash only" -> "bashonly"
 #"Run Git from the Windows Command Prompt" -> "cmd"
 #"Run Git and included Unix tools from the Windows Command Prompt" -> "cmdtools"
-set_unless[:git][:adjust_path] = "cmd"
+default[:git][:adjust_path] = "cmd"

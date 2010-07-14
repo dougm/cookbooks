@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-set_unless[:bginfo][:zip] = "http://download.sysinternals.com/Files/BgInfo.zip"
-set_unless[:bginfo][:dir] = "C:\\pstools"
+default[:bginfo][:zip] = "http://download.sysinternals.com/Files/BgInfo.zip"
+default[:bginfo][:dir] = "C:\\pstools"

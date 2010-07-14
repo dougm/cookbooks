@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set_unless[:cmake][:version] = "2.8"
-set_unless[:cmake][:release] = "2.8.2"
-set_unless[:cmake][:mirror] = "http://www.cmake.org/files"
-set_unless[:cmake][:dir] = "C:\\CMake"
+default[:cmake][:version] = "2.8"
+default[:cmake][:release] = "2.8.2"
+default[:cmake][:mirror] = "http://www.cmake.org/files"
+default[:cmake][:dir] = "C:\\CMake"

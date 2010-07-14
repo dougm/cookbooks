@@ -17,9 +17,9 @@
 # limitations under the License.
 #
 
-set_unless[:macrdc][:connections_dir] = "#{ENV['HOME']}/Documents/RDC Connections"
-set_unless[:macrdc][:desktop_width] = "1280"
-set_unless[:macrdc][:desktop_height] = "800"
-set_unless[:macrdc][:mirror] = "http://download.microsoft.com/download"
-set_unless[:macrdc][:dmg_path] = "C/B/9/CB943CBF-DDA8-4580-A711-88AC23763F0E/RDC201_ALL.dmg"
-set_unless[:macrdc][:target] = "/Applications"
+default[:macrdc][:connections_dir] = "#{ENV['HOME']}/Documents/RDC Connections"
+default[:macrdc][:desktop_width] = "1280"
+default[:macrdc][:desktop_height] = "800"
+default[:macrdc][:mirror] = "http://download.microsoft.com/download"
+default[:macrdc][:dmg_path] = "C/B/9/CB943CBF-DDA8-4580-A711-88AC23763F0E/RDC201_ALL.dmg"
+default[:macrdc][:target] = "/Applications"

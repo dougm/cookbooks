@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set_unless[:python][:release] = "2.6.5/python-2.6.5.msi"
-set_unless[:python][:mirror] = "http://www.python.org/ftp"
-set_unless[:python][:dir] = "C:\\python26"
+default[:python][:release] = "2.6.5/python-2.6.5.msi"
+default[:python][:mirror] = "http://www.python.org/ftp"
+default[:python][:dir] = "C:\\python26"
 

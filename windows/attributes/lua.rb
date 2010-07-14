@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set_unless[:lua][:release] = "5.1.4-39"
-set_unless[:lua][:mirror] = "http://luaforwindows.googlecode.com/files"
-set_unless[:lua][:dir] = "C:\\Lua"
+default[:lua][:release] = "5.1.4-39"
+default[:lua][:mirror] = "http://luaforwindows.googlecode.com/files"
+default[:lua][:dir] = "C:\\Lua"
 

@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set_unless[:pstools][:mirror] = "http://download.sysinternals.com"
-set_unless[:pstools][:packages] = ["PsTools", "ProcessExplorer", "Handle", "DebugView"]
-set_unless[:pstools][:dir] = "C:\\pstools"
-set_unless[:pstools][:accept_eula] = false
+default[:pstools][:mirror] = "http://download.sysinternals.com"
+default[:pstools][:packages] = ["PsTools", "ProcessExplorer", "Handle", "DebugView"]
+default[:pstools][:dir] = "C:\\pstools"
+default[:pstools][:accept_eula] = false

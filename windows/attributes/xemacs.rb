@@ -18,8 +18,8 @@
 #
 
 #21.4.22 breaks jde
-set_unless[:xemacs][:release] = "21.4.21"
+default[:xemacs][:release] = "21.4.21"
 #mirror list at: http://xemacs.org/Download/win32/#InnoSetup-Download
-set_unless[:xemacs][:mirror] = "http://ftp.xemacs.org/pub/xemacs"
-set_unless[:xemacs][:dir] = "C:\\XEmacs"
-set_unless[:xemacs][:type] = "complete" #recommended, complete, minimal or custom
+default[:xemacs][:mirror] = "http://ftp.xemacs.org/pub/xemacs"
+default[:xemacs][:dir] = "C:\\XEmacs"
+default[:xemacs][:type] = "complete" #recommended, complete, minimal or custom
