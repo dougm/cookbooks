@@ -1,4 +1,5 @@
 #
+# Author:: Doug MacEachern <dougm@vmware.com>
 # Cookbook Name:: windows
 # Recipe:: xemacs
 #

@@ -1,4 +1,5 @@
 #
+# Author:: Doug MacEachern <dougm@vmware.com>
 # Cookbook Name:: windows
 # Recipe:: activate
 #
@@ -17,7 +18,7 @@
 # limitations under the License.
 #
 
-#"Active Windows Online"
+#"Activate Windows Online"
 
 require 'ruby-wmi'
 
