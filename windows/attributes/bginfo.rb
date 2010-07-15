@@ -19,3 +19,8 @@
 
 default[:bginfo][:zip] = "http://download.sysinternals.com/Files/BgInfo.zip"
 default[:bginfo][:dir] = "C:\\pstools"
+#create shortcuts in the following locations to run: bginfo.exe /timer:0
+#Start Menu\Programs\Startup will run at login
+default[:bginfo][:shortcuts] = ['c:\Documents and Settings\All Users\Start Menu\Programs\Startup',
+                                'c:\Documents and Settings\All Users\Desktop']
+default[:bginfo][:shortcut_name] = "bginfo_update" #name of the .lnk

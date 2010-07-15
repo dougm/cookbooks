@@ -43,6 +43,12 @@ ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
   end
 end
 
-execute "bginfo" do
-  command "#{exe} /timer:0"
+node[:bginfo][:shortcuts].each do |dir|
+  windows_shortcut "#{dir}\\#{node[:bginfo][:shortcut_name]}.lnk" do
+    target exe
+    arguments "/timer:0"
+    description "created by Chef"
+    action :create
+  end
 end
+
