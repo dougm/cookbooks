@@ -44,11 +44,14 @@ node[:pstools][:packages].each do |pkg|
     not_if { File.exists?(dst) }
   end
 
-  ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
+  windows_unzip dst do
+    force true
+    path bin
+    not_if { File.exists?("#{bin}\\#{pkg_exists[pkg]}") }
+  end
+
+  ruby_block "accepting eula=#{node[:pstools][:accept_eula]}" do
     block do
-      unless File.exists?("#{bin}\\#{pkg_exists[pkg]}")
-        win32_unzip(dst, bin)
-      end
       sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
     end
   end
