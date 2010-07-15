@@ -19,18 +19,8 @@
 #
 
 #enable Remote Desktop and poke the firewall hole
-#XXX make this a provider
-require 'win32/registry'
-
-TERM_SERVICE = 'SYSTEM\CurrentControlSet\Control\Terminal Server'
-
-Win32::Registry::HKEY_LOCAL_MACHINE.open(TERM_SERVICE, Win32::Registry::KEY_ALL_ACCESS) do |reg|
-  if reg['FdenyTSConnections'] == 0
-    Chef::Log.debug("Remote desktop already enabled")
-  else
-    reg['FdenyTSConnections'] = 0
-    Chef::Log.info("Remote desktop is now enabled")
-  end
+windows_registry 'SYSTEM\CurrentControlSet\Control\Terminal Server' do
+  values 'FdenyTSConnections' => 0
 end
 
 execute "firewall rdp enable" do
