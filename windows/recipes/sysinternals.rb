@@ -1,7 +1,7 @@
 #
 # Author:: Doug MacEachern <dougm@vmware.com>
 # Cookbook Name:: windows
-# Recipe:: pstools
+# Recipe:: sysinternals
 #
 # Copyright 2010, VMware, Inc.
 #
@@ -18,43 +18,33 @@
 # limitations under the License.
 #
 
-#install pstools and add to PATH
+#install sysinternals and add to PATH
 #optionally accept eula for all programs
 
-bin = "#{node[:pstools][:dir]}\\bin"
+bin = "#{node[:sysinternals][:dir]}\\bin"
 
 directory bin do
   action :create
   recursive true
 end
 
-pkg_exists = {
-  "PsTools" => "PsExec.exe",
-  "ProcessExplorer" => "procexp.exe",
-  "Handle" => "handle.exe",
-  "DebugView" => "Dbgview.exe"
-}
+zip = "SysinternalsSuite.zip"
+dst = "#{node[:sysinternals][:dir]}\\#{zip}"
 
-#collate various sysinternals packages
-node[:pstools][:packages].each do |pkg|
-  dst = "#{node[:pstools][:dir]}\\#{pkg}.zip"
+remote_file dst do
+  source "#{node[:sysinternals][:mirror]}/#{zip}"
+  not_if { File.exists?(dst) }
+end
 
-  remote_file dst do
-    source "#{node[:pstools][:mirror]}/Files/#{pkg.zip}.zip"
-    not_if { File.exists?(dst) }
-  end
+windows_unzip dst do
+  force true
+  path bin
+  not_if { File.exists?("#{bin}\\PsExec.exe") }
+end
 
-  windows_unzip dst do
-    force true
-    path bin
-    not_if { File.exists?("#{bin}\\#{pkg_exists[pkg]}") }
-  end
-
-  ruby_block "accepting eula=#{node[:pstools][:accept_eula]}" do
-    block do
-      sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
-    end
-  end
+ruby_block "accept sysinternals eula" do
+  only_if { node[:sysinternals][:accept_eula] }
+  block { sysinternals_accept_eula(bin) }
 end
 
 env "PATH" do

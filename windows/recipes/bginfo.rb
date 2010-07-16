@@ -20,29 +20,6 @@
 
 #http://technet.microsoft.com/en-us/sysinternals/bb897557.aspx
 
-dst = "#{node[:bginfo][:dir]}\\BgInfo.zip"
-bin = "#{node[:bginfo][:dir]}\\bin"
-exe = "#{bin}\\Bginfo.exe"
-
-directory bin do
-  action :create
-  recursive true
-end
-
-remote_file dst do
-  source node[:bginfo][:zip]
-  not_if { File.exists?(dst) }
-end
-
-ruby_block "unzip #{dst} (accepting eula=#{node[:pstools][:accept_eula]})" do
-  block do
-    unless File.exists?(exe)
-      win32_unzip(dst, bin)
-    end
-    sysinternals_accept_eula(node[:pstools][:accept_eula], bin)
-  end
-end
-
 node[:bginfo][:shortcuts].each do |dir|
   windows_shortcut "#{dir}\\#{node[:bginfo][:shortcut_name]}.lnk" do
     target exe

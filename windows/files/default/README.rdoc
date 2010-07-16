@@ -102,7 +102,7 @@ spork will only work on a Windows machine.
 
 spork depends on psexec to run remote commands: http://technet.microsoft.com/en-us/sysinternals/bb897553.aspx
 
-You can also install on your local machine using the windows::pstools recipe.
+You can also install on your local machine using the windows::sysinternals recipe.
 
 == Firewall
 

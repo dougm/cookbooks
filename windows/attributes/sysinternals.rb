@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: windows
-# Attributes:: pstools
+# Attributes:: sysinternals
 #
 # Copyright 2010, VMware, Inc.
 #
@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-default[:pstools][:mirror] = "http://download.sysinternals.com"
-default[:pstools][:packages] = ["PsTools", "ProcessExplorer", "Handle", "DebugView"]
-default[:pstools][:dir] = "C:\\pstools"
-default[:pstools][:accept_eula] = false
+default[:sysinternals][:mirror] = "http://download.sysinternals.com/Files"
+default[:sysinternals][:dir] = 'C:\sysinternals'
+default[:sysinternals][:accept_eula] = false

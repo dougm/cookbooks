@@ -35,15 +35,14 @@ def win32_unzip(file, dest, force=true)
   end
 end
 
-def sysinternals_accept_eula(accept, bin)
+def sysinternals_accept_eula(bin)
   require 'win32/registry'
-  if accept
-    #avoid eula dialog box on first run of *.exe
-    key = Win32::Registry::HKEY_CURRENT_USER.create('Software\Sysinternals')
 
-    Dir.glob("#{bin}\\*.exe").each do |file|
-      file = File.basename(file).gsub("\.exe", "")
-      key.create(file).write_i("EulaAccepted", 1)
-    end
+  #avoid eula dialog box on first run of *.exe
+  key = Win32::Registry::HKEY_CURRENT_USER.create('Software\Sysinternals')
+
+  Dir.glob("#{bin}\\*.exe").each do |file|
+    file = File.basename(file).gsub("\.exe", "")
+    key.create(file).write_i("EulaAccepted", 1)
   end
 end
