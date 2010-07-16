@@ -21,13 +21,10 @@
 actions :modify, :create
 
 attribute :key_name, :kind_of => String
-attribute :hkey, :equal_to => [ :LOCAL_MACHINE, :USERS, :CURRENT_USER ]
 attribute :values, :kind_of => Hash
-attribute :load_key, :kind_of => Hash
 
 def initialize(name, run_context=nil)
   super
   @action = :modify
   @key_name = name
-  @values = {}
 end

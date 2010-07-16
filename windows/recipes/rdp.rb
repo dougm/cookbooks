@@ -19,7 +19,7 @@
 #
 
 #enable Remote Desktop and poke the firewall hole
-windows_registry 'SYSTEM\CurrentControlSet\Control\Terminal Server' do
+windows_registry 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   values 'FdenyTSConnections' => 0
 end
 
