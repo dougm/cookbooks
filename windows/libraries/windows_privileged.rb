@@ -18,18 +18,22 @@
 # limitations under the License.
 #
 
-require 'windows/error'
-require 'windows/registry'
-require 'windows/process'
-require 'windows/security'
-
 #helpers for Windows API calls that require privilege adjustments
 class Chef
   class WindowsPrivileged
-    include Windows::Error
-    include Windows::Registry
-    include Windows::Process
-    include Windows::Security
+
+    #XXX can we tell Chef not to load this library unless on Windows?
+    if RUBY_PLATFORM =~ /mswin|mingw32|windows/
+      require 'windows/error'
+      require 'windows/registry'
+      require 'windows/process'
+      require 'windows/security'
+
+      include Windows::Error
+      include Windows::Registry
+      include Windows::Process
+      include Windows::Security
+    end
 
     #File -> Load Hive... in regedit.exe
     def reg_load_key(name, file)
