@@ -19,6 +19,18 @@
 #
 
 def action_run
+  #gem rubyzip; is there a ruby stdlib alternative?
+  require 'zip/zip'
   Chef::Log.debug("unzip #{@new_resource.source} -> #{@new_resource.path} (force=#{@new_resource.force})")
-  win32_unzip(@new_resource.source, @new_resource.path, @new_resource.force)
+
+  Zip::ZipFile.open(@new_resource.source) do |zip|
+    zip.each do |entry|
+      path = ::File.join(@new_resource.path, entry.name)
+      FileUtils.mkdir_p(::File.dirname(path))
+      if @new_resource.force && ::File.exists?(path)
+        FileUtils.rm(path)
+      end
+      zip.extract(entry, path)
+    end
+  end
 end
