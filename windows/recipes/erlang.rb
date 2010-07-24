@@ -19,7 +19,7 @@
 #
 
 exe = "otp_win32_#{node[:erlang][:release]}.exe"
-dst = "#{node[:erlang][:dir]}\\#{exe}"
+dst = "#{node[:windows][:download_dir]}\\#{exe}"
 erl = "#{node[:erlang][:dir]}\\bin\\erl.exe"
 
 directory node[:erlang][:dir] do

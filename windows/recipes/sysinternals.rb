@@ -29,7 +29,7 @@ directory bin do
 end
 
 zip = "SysinternalsSuite.zip"
-dst = "#{node[:sysinternals][:dir]}\\#{zip}"
+dst = "#{node[:windows][:download_dir]}\\#{zip}"
 
 remote_file dst do
   source "#{node[:sysinternals][:mirror]}/#{zip}"

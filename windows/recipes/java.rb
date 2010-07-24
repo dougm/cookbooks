@@ -31,7 +31,7 @@ installer = ["jdk", node[:java][:release], "windows", node[:java][:jdk_arch]].jo
 java_home = node[:java][:jdk_dir]
 jre_home = node[:java][:jre_dir]
 
-dst = "#{java_home}\\#{installer}"
+dst = "#{node[:windows][:download_dir]}\\#{installer}"
 
 directory java_home do
   action :create

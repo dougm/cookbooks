@@ -19,7 +19,7 @@
 #
 
 exe = "LuaForWindows_v#{node[:lua][:release]}.exe"
-dst = "#{node[:lua][:dir]}\\#{exe}"
+dst = "#{node[:windows][:download_dir]}\\#{exe}"
 
 directory node[:lua][:dir] do
   action :create

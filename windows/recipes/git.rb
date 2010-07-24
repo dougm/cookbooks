@@ -19,7 +19,7 @@
 #
 
 exe = "Git-#{node[:git][:release]}.exe"
-dst = "#{node[:git][:dir]}\\#{exe}"
+dst = "#{node[:windows][:download_dir]}\\#{exe}"
 git = "#{node[:git][:dir]}\\bin\\git.exe"
 
 directory node[:git][:dir] do

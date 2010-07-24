@@ -20,7 +20,7 @@
 
 pth = "v#{node[:cmake][:version]}/cmake-#{node[:cmake][:release]}-win32-x86.exe"
 exe = File.basename(pth)
-dst = "#{node[:cmake][:dir]}\\#{exe}"
+dst = "#{node[:windows][:download_dir]}\\#{exe}"
 bin = "#{node[:cmake][:dir]}\\bin"
 
 directory node[:cmake][:dir] do

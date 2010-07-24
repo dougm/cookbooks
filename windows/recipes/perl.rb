@@ -20,7 +20,7 @@
 
 msi = File.basename(node[:perl][:release])
 dir = "#{node[:perl][:dir]}\\Perl"
-dst = "#{dir}\\#{msi}"
+dst = "#{node[:windows][:download_dir]}\\#{msi}"
 
 directory dir do
   action :create

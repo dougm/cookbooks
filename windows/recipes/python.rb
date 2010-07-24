@@ -20,7 +20,7 @@
 
 msi = File.basename(node[:python][:release])
 dir = node[:python][:dir]
-dst = "#{dir}\\#{msi}"
+dst = "#{node[:windows][:download_dir]}\\#{msi}"
 
 directory dir do
   action :create
