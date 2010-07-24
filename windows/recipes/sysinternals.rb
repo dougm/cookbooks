@@ -44,7 +44,17 @@ end
 
 ruby_block "accept sysinternals eula" do
   only_if { node[:sysinternals][:accept_eula] }
-  block { sysinternals_accept_eula(bin) }
+  block do
+    require 'win32/registry'
+
+    #avoid eula dialog box on first run of *.exe
+    key = Win32::Registry::HKEY_CURRENT_USER.create('Software\Sysinternals')
+
+    Dir.glob("#{bin}\\*.exe").each do |file|
+      file = File.basename(file).gsub("\.exe", "")
+      key.create(file).write_i("EulaAccepted", 1)
+    end
+  end
 end
 
 env "PATH" do

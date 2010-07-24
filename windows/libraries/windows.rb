@@ -20,14 +20,3 @@
 
 #generic windows stuff
 
-def sysinternals_accept_eula(bin)
-  require 'win32/registry'
-
-  #avoid eula dialog box on first run of *.exe
-  key = Win32::Registry::HKEY_CURRENT_USER.create('Software\Sysinternals')
-
-  Dir.glob("#{bin}\\*.exe").each do |file|
-    file = File.basename(file).gsub("\.exe", "")
-    key.create(file).write_i("EulaAccepted", 1)
-  end
-end
