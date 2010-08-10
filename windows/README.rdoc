@@ -1,8 +1,2 @@
-= DESCRIPTION:
-
-= REQUIREMENTS:
-
-= ATTRIBUTES: 
-
-= USAGE:
+cookbooks/windows has moved to: http://github.com/dougm/site-cookbooks/tree/master/windows/
 
